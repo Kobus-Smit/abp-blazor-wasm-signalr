@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Volo.Abp.AspNetCore.SignalR;
-using Volo.Abp.Users;
 
 namespace Test.Hubs
 {
@@ -12,9 +12,9 @@ namespace Test.Hubs
             return base.OnConnectedAsync();
         }
 
+        [Authorize]
         public async Task SendMessage(string targetUserName, string message)
         {
-            var tenantId = Context?.User?.FindFirst("tenantid")?.Value;
             var currentUserName = CurrentUser.UserName; //Access to the current user info
         }
 

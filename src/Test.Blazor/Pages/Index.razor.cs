@@ -15,6 +15,7 @@ namespace Test.Blazor.Pages
             {
                 hubConnection = new HubConnectionBuilder().WithUrl("https://localhost:44314/signalr-hubs/messaging").Build();
                 await hubConnection.StartAsync();
+                await hubConnection.SendCoreAsync("SendMessage", new []{ "TestUser", "TestMessage" });
             }
         }
 
